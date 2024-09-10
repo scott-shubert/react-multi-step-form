@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --marine-blue: hsl(213, 96%, 18%);
+    --purplish: hsl(243, 100%, 62%);
+    --pastel-blue: hsl(228, 100%, 84%);
+    --light-blue: hsl(206, 94%, 87%);
+    --strawberry: hsl(354, 84%, 57%);
+    --cool-gray: hsl(231, 11%, 63%);
+    --light-gray: hsl(229, 24%, 87%);
+    --magnolia: hsl(217, 100%, 97%);
+    --alabaster: hsl(231, 100%, 99%);
+    --light-orange: rgb(255,175,125);
+    --light-purple: rgb(247,249, 254);
+}
+
+* { 
+    box-sizing: border-box;
+    font-family: 'Ubuntu';
+    font-weight: normal;
+    color: var(--marine-blue);
+ }
+
+body {
+    background-color: var(--magnolia);
+}
+
+.main-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.form-card {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    height: 400px;
+    max-width: 700px;
+    min-width: 650px;
+    width: 80%;
+    padding: 10px;
+}
+
+.card-content {
+    padding: 25px 55px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.nav-buttons-both {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-buttons-single {
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background-color: var(--marine-blue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.btn-primary:hover {
+    cursor: pointer;
+    background-color: var(--purplish);
+}
+
+.btn-secondary {
+    border: none;
+    background-color: transparent;
+    color: var(--cool-gray);
+    padding: 10px 15px;
+}
+
+.btn-secondary:hover {
+    cursor: pointer;
+    color: black;    
+}
+
+.title {
+    margin: 0;
+    font-weight: bolder;
+}
+
+.description {
+    color: var(--cool-gray);
+    font-size: 12px;
+}
+
+/* Asside Stepper */
+
+.card-steps {
+    width: 180px;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 15px;
+    border-radius: 5px;
+    background-image: url(/images/bg-sidebar-desktop.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+}
+
+.step-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 10px;
+}
+
+.step-value {
+    font-size: 8px;
+    border: 1px solid white;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    padding-top: 4px;
+    color: white;
+    text-align: center;
+}
+
+.step-value-active {
+    color: black;
+    background-color: var(--light-blue);
+}
+
+.step-label {
+    font-size: 8px;
+    text-align: left;
+    color: var(--cool-gray);
+}
+
+.step-name {
+    color: white;
+    font-weight: bolder;
+}
+
+/* text input */
+.input-label {
+    font-size: 10px;
+}
+
+.text-input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+}
+
+.text-input::placeholder {
+    color: var(--cool-gray);
+}
+
+/* contact page */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+/* plan page */
+.plans {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.plan-btn {
+    background-color: transparent;
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    height: 150px;
+    min-width: 110px;
+    padding: 5px 0;
+}
+
+.plan-btn:hover {
+    cursor: pointer;
+}
+
+.plan-btn-selected {
+    border-color: var(--purplish);
+    background-color: var(--light-purple);
+}
+.plan-switch-div {
+    background-color: var(--light-purple);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 15px;
+    align-items: center;
+    font-size: 12px;
+}
+
+.plan-inner-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: flex-start;
+    height: 100%;
+    padding: 10px;
+    text-align: left;
+}
+
+.plan-img {
+    width: 30px;
+}
+
+.plan-name {
+    font-weight: bold;
+    margin: 0;
+    font-size: 14px;
+}
+
+.plan-cost {
+    color: var(--cool-gray);
+    margin: 5px 0;
+    font-size: 10px;
+}
+
+.plan-free {
+    font-size: 10px;
+    margin: 0;
+}
