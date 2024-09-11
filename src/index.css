@@ -329,3 +329,66 @@ input[type=checkbox]:hover {
     width: 7px;
     height: 7px;
 }
+
+/* Summary */
+.summary-plan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-purple);
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
+    margin-top: 25px;
+    font-size: 12px;
+}
+
+.summary-change-btn {
+    color: var(--cool-gray);
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    padding: 5px 0;
+    font-size: 10px;
+}
+
+.summary-change-btn:hover  {
+    cursor: pointer;
+}
+
+.summary-divide {
+    margin: 0;
+    background-color: var(--light-gray);
+    border: none;
+    height: 1px;
+    margin-bottom: 15px;
+}
+
+.summary-addons {
+    padding: 0 15px;
+    background-color: var(--light-purple);
+    border-radius: 0 0 5px 5px;
+    font-size: 10px;
+}
+.summary-addon {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;    
+}
+
+.summary-addon-name {
+    color: var(--cool-gray);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.total-text {
+    color: var(--purplish);
+}
+
+.total-price {
+    color: var(--purplish);
+}

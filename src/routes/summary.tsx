@@ -1,12 +1,16 @@
 import { useMemo } from 'react'
 import { SubscriptionDetails } from '../interfaces'
+import { useNavigate } from 'react-router'
+import { paths } from './root'
 
 export default function Summary({
 	formState,
 }: {
 	formState: SubscriptionDetails
 }) {
+	const navigate = useNavigate()
 	let total = 0
+
 	useMemo(() => {
 		if (formState.yearly) {
 			total = formState.plan!.cost.yearly
@@ -21,37 +25,52 @@ export default function Summary({
 		}
 	}, [])
 
+	const handleClick = () => {
+		navigate(paths[1].value)
+	}
+
 	return (
 		<div>
-			<h2>Finishing up</h2>
-			<p>Double check everything looks OK before confirming.</p>
+			<h2 className='title'>Finishing up</h2>
+			<p className='description'>
+				Double check everything looks OK before confirming.
+			</p>
 			<div>
-				<div>
+				<div className='summary-plan'>
 					<div>
-						{formState.plan!.name} ({formState.yearly ? 'yearly' : 'monthly'})
+						<div>
+							{formState.plan!.name} ({formState.yearly ? 'Yearly' : 'Monthly'})
+						</div>
+						<button className='summary-change-btn' onClick={handleClick}>
+							Change
+						</button>
 					</div>
-					{formState.yearly && <div>${formState.plan?.cost.yearly}/year</div>}
-					{!formState.yearly && (
-						<div>${formState.plan?.cost.monthly}/month</div>
-					)}
+					{formState.yearly && <div>${formState.plan?.cost.yearly}/yr</div>}
+					{!formState.yearly && <div>${formState.plan?.cost.monthly}/mo</div>}
 				</div>
 				{formState.addOns.length !== 0 && (
-					<div>
+					<div className='summary-addons'>
+						<hr className='summary-divide' />
 						{formState.addOns.map((addon) => {
-							return (
-								<div key={addon.id}>
-									<div>{addon.name}</div>
-									{formState.yearly && <div>+${addon.cost * 12}/yr</div>}
-									{!formState.yearly && <div>+${addon.cost}/mon</div>}
-								</div>
-							)
+							if (addon.selected)
+								return (
+									<div className='summary-addon' key={addon.id}>
+										<div className='summary-addon-name'>{addon.name}</div>
+										{formState.yearly && <div>+${addon.cost * 12}/yr</div>}
+										{!formState.yearly && <div>+${addon.cost}/mo</div>}
+									</div>
+								)
 						})}
 					</div>
 				)}
-				<div>
-					<div>Total (per {formState.yearly ? 'year' : 'month'})</div>
-					{formState.yearly && <div>${total}/yr</div>}
-					{!formState.yearly && <div>${total}/mon</div>}
+				<div className='summary-total'>
+					<div className='total-text'>
+						Total (Per {formState.yearly ? 'Year' : 'Month'})
+					</div>
+					<div className='total-price'>
+						${total}
+						{formState.yearly ? '/yr' : '/mo'}
+					</div>
 				</div>
 			</div>
 		</div>
