@@ -14,6 +14,7 @@ export interface AddOnDetails {
 	name: string
 	cost: number
 	description: string
+	selected: boolean
 }
 
 export class SubscriptionDetails {

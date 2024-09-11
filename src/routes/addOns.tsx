@@ -1,4 +1,4 @@
-import { AddOnDetails, SubscriptionDetails } from '../interfaces'
+import { SubscriptionDetails } from '../interfaces'
 
 export default function AddOns({
 	formState,
@@ -7,58 +7,59 @@ export default function AddOns({
 	formState: SubscriptionDetails
 	setFormState: (value: SubscriptionDetails) => void
 }) {
-	const addOns: AddOnDetails[] = [
-		{
-			id: '1',
-			name: 'Online Service',
-			cost: 2,
-			description: 'Access to multiplayer games',
-		},
-		{
-			id: '2',
-			name: 'Larger Storage',
-			cost: 3,
-			description: 'Extra 1TB of cloud saves',
-		},
-		{
-			id: '3',
-			name: 'Custom Profile Theme',
-			cost: 1,
-			description: 'Custom theme on your profile',
-		},
-	]
-
-	const handleSelectAddOn = (addOn: AddOnDetails) => {
-		const index = formState.addOns.findIndex((value) => value.id === addOn.id)
-		if (index < 0) {
-			setFormState({ ...formState, addOns: [...formState.addOns, addOn] })
-		} else {
-			const newAddons = [...formState.addOns]
-			newAddons.splice(index, 1)
-			setFormState({ ...formState, addOns: newAddons })
-		}
+	const handleSelectAddOn = (id: string) => {
+		const addOns = [...formState.addOns].map((addon) => {
+			if (addon.id === id) {
+				return { ...addon, selected: !addon.selected }
+			}
+			return { ...addon }
+		})
+		setFormState({ ...formState, addOns })
 	}
 
 	return (
 		<div>
-			<h2>Pick add-ons</h2>
-			<p>Add-ons help enhance your gaming experience.</p>
-			<div>
-				{addOns.map((addOn) => {
+			<h2 className='title'>Pick add-ons</h2>
+			<p className='description'>
+				Add-ons help enhance your gaming experience.
+			</p>
+			<div className='add-on-content'>
+				{formState.addOns.map((addOn) => {
 					return (
-						<div key={addOn.id}>
-							<button onClick={() => handleSelectAddOn(addOn)}>
-								<div>
-									{formState.addOns.findIndex(
-										(value) => value.id === addOn.id
-									) >= 0 && 'selected'}
+						<div key={addOn.id} className='add-on-div'>
+							<button
+								onClick={() => handleSelectAddOn(addOn.id)}
+								className={
+									addOn.selected
+										? 'add-on-button add-on-selected'
+										: 'add-on-button'
+								}
+							>
+								<div className='add-on-left'>
+									{addOn.selected ? (
+										<div className='checked-box'>
+											<img
+												src='/images/icon-checkmark.svg'
+												className='checkmark'
+											/>
+										</div>
+									) : (
+										<div className='unchecked-box'></div>
+									)}
+									<div>
+										<div className='add-on-name'>{addOn.name}</div>
+										<div className='add-on-description'>
+											{addOn.description}
+										</div>
+									</div>
 								</div>
-								<div>
-									<div>{addOn.name}</div>
-									<div>{addOn.description}</div>
+								<div className='add-on-price'>
+									{formState.yearly ? (
+										<>+${addOn.cost * 12}/yr</>
+									) : (
+										<>+${addOn.cost}/mo</>
+									)}
 								</div>
-								{formState.yearly && <div>+${addOn.cost * 12}/year</div>}
-								{!formState.yearly && <div>+${addOn.cost}/month</div>}
 							</button>
 						</div>
 					)
