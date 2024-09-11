@@ -55,9 +55,9 @@ export default function AddOns({
 								</div>
 								<div className='add-on-price'>
 									{formState.yearly ? (
-										<>+${addOn.cost * 12}/yr</>
+										<>+${addOn.cost.yearly}/yr</>
 									) : (
-										<>+${addOn.cost}/mo</>
+										<>+${addOn.cost.monthly}/mo</>
 									)}
 								</div>
 							</button>

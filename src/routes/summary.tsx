@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { SubscriptionDetails } from '../interfaces'
 import { useNavigate } from 'react-router'
 import { paths } from './root'
@@ -9,20 +9,24 @@ export default function Summary({
 	formState: SubscriptionDetails
 }) {
 	const navigate = useNavigate()
-	let total = 0
+	const [total, setTotal] = useState(0)
 
-	useMemo(() => {
+	useEffect(() => {
+		let newTotal = 0
 		if (formState.yearly) {
-			total = formState.plan!.cost.yearly
+			newTotal = formState.plan!.cost.yearly
+
 			for (const addon of formState.addOns) {
-				total += addon.cost * 12
+				if (addon.selected) newTotal += addon.cost.yearly
 			}
 		} else {
-			total = formState.plan!.cost.monthly
+			newTotal = formState.plan!.cost.monthly
+
 			for (const addon of formState.addOns) {
-				total += addon.cost
+				if (addon.selected) newTotal += addon.cost.monthly
 			}
 		}
+		setTotal(newTotal)
 	}, [])
 
 	const handleClick = () => {
@@ -56,8 +60,8 @@ export default function Summary({
 								return (
 									<div className='summary-addon' key={addon.id}>
 										<div className='summary-addon-name'>{addon.name}</div>
-										{formState.yearly && <div>+${addon.cost * 12}/yr</div>}
-										{!formState.yearly && <div>+${addon.cost}/mo</div>}
+										{formState.yearly && <div>+${addon.cost.yearly}/yr</div>}
+										{!formState.yearly && <div>+${addon.cost.monthly}/mo</div>}
 									</div>
 								)
 						})}

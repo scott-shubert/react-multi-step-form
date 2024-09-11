@@ -1,10 +1,11 @@
+export interface Cost {
+	monthly: number
+	yearly: number
+}
 export interface PlanDetails {
 	id: string
 	name: string
-	cost: {
-		monthly: number
-		yearly: number
-	}
+	cost: Cost
 	monthsFree: number
 	imageURL: string
 }
@@ -12,7 +13,7 @@ export interface PlanDetails {
 export interface AddOnDetails {
 	id: string
 	name: string
-	cost: number
+	cost: Cost
 	description: string
 	selected: boolean
 }
