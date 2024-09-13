@@ -1,4 +1,3 @@
-import { useMemo, useState } from 'react'
 import { SubscriptionDetails } from '../interfaces'
 import { useNavigate } from 'react-router'
 import { paths } from './root'
@@ -9,25 +8,21 @@ export default function Summary({
 	formState: SubscriptionDetails
 }) {
 	const navigate = useNavigate()
-	const [total, setTotal] = useState(0)
+	let newTotal = 0
+	if (formState.yearly) {
+		newTotal = formState.plan!.cost.yearly
 
-	useMemo(() => {
-		let newTotal = 0
-		if (formState.yearly) {
-			newTotal = formState.plan!.cost.yearly
-
-			for (const addon of formState.addOns) {
-				if (addon.selected) newTotal += addon.cost.yearly
-			}
-		} else {
-			newTotal = formState.plan!.cost.monthly
-
-			for (const addon of formState.addOns) {
-				if (addon.selected) newTotal += addon.cost.monthly
-			}
+		for (const addon of formState.addOns) {
+			if (addon.selected) newTotal += addon.cost.yearly
 		}
-		setTotal(newTotal)
-	}, [])
+	} else {
+		newTotal = formState.plan!.cost.monthly
+
+		for (const addon of formState.addOns) {
+			if (addon.selected) newTotal += addon.cost.monthly
+		}
+	}
+	const total = newTotal
 
 	const handleClick = () => {
 		navigate(paths[1].value)
