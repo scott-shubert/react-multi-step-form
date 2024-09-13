@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { SubscriptionDetails } from '../interfaces'
 import { useNavigate } from 'react-router'
 import { paths } from './root'
@@ -11,7 +11,7 @@ export default function Summary({
 	const navigate = useNavigate()
 	const [total, setTotal] = useState(0)
 
-	useEffect(() => {
+	useMemo(() => {
 		let newTotal = 0
 		if (formState.yearly) {
 			newTotal = formState.plan!.cost.yearly
