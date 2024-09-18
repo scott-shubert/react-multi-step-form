@@ -2,6 +2,13 @@ import { useNavigate } from 'react-router'
 import TextInput from '../components/text-input'
 import { SubscriptionDetails } from '../interfaces'
 import { paths } from './root'
+import { useForm, SubmitHandler } from 'react-hook-form'
+
+export type FormValues = {
+	name: string
+	email: string
+	phone: string
+}
 
 export default function Contact({
 	formState,
@@ -11,21 +18,18 @@ export default function Contact({
 	setFormState: (value: SubscriptionDetails) => void
 }) {
 	const navigate = useNavigate()
+	const { control, handleSubmit } = useForm<FormValues>({
+		defaultValues: {
+			name: formState.name,
+			email: formState.email,
+			phone: formState.phone,
+		},
+		mode: 'onChange',
+	})
 
-	const handleNameChange = (name: string) => {
-		setFormState({ ...formState, name })
-	}
-
-	const handleEmailChange = (email: string) => {
-		setFormState({ ...formState, email })
-	}
-
-	const handlePhoneChange = (phone: string) => {
-		setFormState({ ...formState, phone })
-	}
-
-	const handleSubmit = (event: React.SyntheticEvent) => {
-		event.preventDefault()
+	const onSubmit: SubmitHandler<FormValues> = (data) => {
+		const { name, email, phone } = data
+		setFormState({ ...formState, name, email, phone })
 		navigate(paths[1].value)
 	}
 
@@ -36,27 +40,39 @@ export default function Contact({
 				Please provide your name, email address, and phone number.
 			</p>
 			<div>
-				<form id='contact-form' onSubmit={handleSubmit}>
+				<form id='contact-form' onSubmit={handleSubmit(onSubmit)}>
 					<TextInput
+						placeholder='Steven King'
 						label='Name'
-						placeholder='e.g. Stephen King'
-						type='text'
-						state={formState.name}
-						onStateChange={(value) => handleNameChange(value)}
+						control={control}
+						name='name'
+						rules={{ required: 'Name is Required' }}
 					/>
 					<TextInput
+						placeholder='stevenking@gmail.com'
 						label='Email Address'
-						placeholder='e.g. sking@gmail.com'
-						type='email'
-						state={formState.email}
-						onStateChange={(value) => handleEmailChange(value)}
+						control={control}
+						name='email'
+						rules={{
+							required: 'Email is Required',
+							pattern: {
+								value: /^[^@]+@[^@]+\.[^@]+$/,
+								message: 'Invalid Format',
+							},
+						}}
 					/>
 					<TextInput
+						placeholder='123-555-1234'
 						label='Phone Number'
-						placeholder='e.g. +1 614 312 1641'
-						type='tel'
-						state={formState.phone}
-						onStateChange={(value) => handlePhoneChange(value)}
+						control={control}
+						name='phone'
+						rules={{
+							required: 'Phone Number is Required',
+							pattern: {
+								value: /^(\(\d{3}\)|\d{3})-?\d{3}-?\d{4}$/,
+								message: 'Invalid Format',
+							},
+						}}
 					/>
 				</form>
 			</div>

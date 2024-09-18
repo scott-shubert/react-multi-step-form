@@ -165,15 +165,26 @@ body {
 
 .text-input {
     margin-top: 5px;
-    margin-bottom: 10px;
     width: 100%;
     padding: 10px;
     border-radius: var(--border-radius);
     border: 1px solid var(--light-gray);
+    height: 30px;
+}
+
+.input-container {
+    height: 50px;
 }
 
 .text-input::placeholder {
     color: var(--cool-gray);
+}
+
+.error-text {
+    font-size: 8px;
+    color: var(--purplish);
+    margin: 0;
+    margin-top: 2px;
 }
 
 /* contact page */

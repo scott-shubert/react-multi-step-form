@@ -1,35 +1,29 @@
 import { useId } from 'react'
+import { useController, UseControllerProps } from 'react-hook-form'
+import { FormValues } from '../routes/contact'
 
 export default function TextInput({
 	label,
 	placeholder,
-	type,
-	state,
-	onStateChange,
-}: {
-	label: string
-	placeholder: string
-	type: string
-	state: string
-	onStateChange: (value: string) => void
-}) {
+	...props
+}: { label: string; placeholder: string } & UseControllerProps<FormValues>) {
 	const id = useId()
-
+	const { field, fieldState } = useController(props)
 	return (
 		<div>
 			<label className='input-label' htmlFor={id}>
 				{label}
 			</label>
-			<div>
+			<div className='input-container'>
 				<input
-					required={true}
+					{...field}
 					className='text-input'
 					id={id}
-					type={type}
 					placeholder={placeholder}
-					value={state}
-					onChange={(event) => onStateChange(event.target.value)}
 				/>
+				<p className='error-text' role='alert'>
+					{fieldState.error?.message}
+				</p>
 			</div>
 		</div>
 	)
