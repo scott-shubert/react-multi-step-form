@@ -83,6 +83,10 @@ body {
     background-color: var(--purplish);
 }
 
+.btn-primary:focus {
+    outline: 2px solid var(--purplish);
+}
+
 .btn-secondary {
     border: none;
     background-color: transparent;
@@ -93,6 +97,11 @@ body {
 .btn-secondary:hover {
     cursor: pointer;
     color: black;    
+}
+
+.btn-secondary:focus {
+    outline: 2px solid var(--purplish);
+    border-radius: var(--border-radius);
 }
 
 .title {
@@ -172,6 +181,11 @@ body {
     height: 30px;
 }
 
+.text-input:focus {
+    border: 1px solid var(--purplish);
+    outline: none;
+}
+
 .input-container {
     height: 50px;
 }
@@ -213,6 +227,11 @@ body {
 
 .plan-btn:hover {
     cursor: pointer;
+}
+
+.plan-btn:focus {
+    border: 1px solid var(--purplish);
+    outline: 1px solid var(--purplish);
 }
 
 .plan-btn-selected {
@@ -286,6 +305,11 @@ body {
     cursor: pointer;
 }
 
+.add-on-button:focus {
+    border: 1px solid var(--purplish);
+    outline: 1px solid var(--purplish);
+}
+
 .add-on-selected {
     background-color: var(--light-purple);
 }
@@ -354,16 +378,24 @@ input[type=checkbox]:hover {
 }
 
 .summary-change-btn {
+    position: relative;
+    top: 0;
+    left: -5px;
     color: var(--cool-gray);
     border: none;
     background-color: transparent;
     text-decoration: underline;
-    padding: 5px 0;
+    padding: 5px;
     font-size: 10px;
 }
 
-.summary-change-btn:hover  {
+.summary-change-btn:hover {
     cursor: pointer;
+}
+
+.summary-change-btn:focus {
+    outline: 1px solid var(--purplish);
+    border-radius: var(--border-radius);
 }
 
 .summary-divide {
