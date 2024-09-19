@@ -1,4 +1,5 @@
 import { SubscriptionDetails } from '../../interfaces'
+import './AddOns.css'
 
 export default function AddOns({
 	formState,

@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router'
 import NavButtons from '../../components/NavButtons/NavButtons'
 import AssideStepper from '../../components/AsideStepper/AssideStepper'
+import './Root.css'
 
 export const paths = [
 	{ value: '/', label: 'Your Info' },

@@ -1,0 +1,36 @@
+.step-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 10px;
+}
+
+.step-value {
+    font-size: 8px;
+    border: 1px solid white;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    padding-top: 4px;
+    color: white;
+    text-align: center;
+}
+
+.step-value-active {
+    color: black;
+    background-color: var(--light-blue);
+}
+
+.step-label {
+    font-size: 8px;
+    text-align: left;
+    color: var(--cool-gray);
+}
+
+.step-name {
+    color: white;
+    font-weight: bolder;
+}

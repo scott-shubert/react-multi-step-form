@@ -1,3 +1,5 @@
+import './Confirmation.css'
+
 export default function Confirmmation() {
 	return (
 		<div className='confirmation'>

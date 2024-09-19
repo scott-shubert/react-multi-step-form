@@ -1,0 +1,10 @@
+.nav-buttons-both {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-buttons-single {
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+}

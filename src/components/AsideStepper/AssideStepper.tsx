@@ -1,5 +1,6 @@
 import { paths } from '../../routes/Root/Root'
 import Step from '../Step/Step'
+import './AssideStepper.css'
 
 export default function AssideStepper() {
 	return (

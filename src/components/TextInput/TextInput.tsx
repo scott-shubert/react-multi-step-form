@@ -1,6 +1,7 @@
 import { useId } from 'react'
 import { useController, UseControllerProps } from 'react-hook-form'
-import { FormValues } from '../routes/contact'
+import './TextInput.css'
+import { FormValues } from '../../routes/Contact/Contact'
 
 export default function TextInput({
 	label,

@@ -2,6 +2,7 @@ import PlanButton from '../../components/PlanButton/PlanButton'
 import Toggle from '../../components/Toggle/Toggle'
 import { PlanDetails, SubscriptionDetails } from '../../interfaces'
 import { plans } from '../../sampleData'
+import './Plans.css'
 
 export default function Plans({
 	formState,

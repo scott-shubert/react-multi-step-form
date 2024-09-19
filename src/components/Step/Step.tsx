@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router'
+import './Step.css'
 
 export default function Step({
 	step,

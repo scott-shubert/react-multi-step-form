@@ -1,0 +1,19 @@
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-bottom: 25px;
+}
+
+.thank-you {
+    margin: 15px 0;
+}
+
+.confirmation-text {
+    color: var(--cool-gray);
+    font-size: 12px;
+    margin: 0;
+}

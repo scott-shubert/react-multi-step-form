@@ -1,0 +1,12 @@
+.card-steps {
+    width: 180px;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 15px;
+    border-radius: var(--border-radius);
+    background-image: url(/images/bg-sidebar-desktop.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+}

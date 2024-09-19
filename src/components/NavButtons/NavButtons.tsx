@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router'
 import { paths } from '../../routes/Root/Root'
+import './NavButtons.css'
 
 export default function NavButtons({ currentStep }: { currentStep: string }) {
 	const navigate = useNavigate()
