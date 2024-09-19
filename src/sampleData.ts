@@ -1,4 +1,4 @@
-import { AddOnDetails } from './interfaces'
+import { AddOnDetails, PlanDetails } from './interfaces'
 
 export const allAddOns: AddOnDetails[] = [
 	{
@@ -30,5 +30,38 @@ export const allAddOns: AddOnDetails[] = [
 		},
 		description: 'Custom theme on your profile',
 		selected: false,
+	},
+]
+
+export const plans: PlanDetails[] = [
+	{
+		id: '1',
+		name: 'Arcade',
+		cost: {
+			monthly: 10,
+			yearly: 90,
+		},
+		monthsFree: 2,
+		imageURL: '/images/icon-arcade.svg',
+	},
+	{
+		id: '2',
+		name: 'Advanced',
+		cost: {
+			monthly: 12,
+			yearly: 120,
+		},
+		monthsFree: 2,
+		imageURL: '/images/icon-advanced.svg',
+	},
+	{
+		id: '3',
+		name: 'Pro',
+		cost: {
+			monthly: 15,
+			yearly: 150,
+		},
+		monthsFree: 2,
+		imageURL: '/images/icon-pro.svg',
 	},
 ]

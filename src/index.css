@@ -216,69 +216,6 @@ body {
     margin-top: 30px;
     margin-bottom: 20px;
 }
-.plan-btn {
-    background-color: transparent;
-    border: 1px solid var(--light-gray);
-    border-radius: var(--border-radius);
-    height: 150px;
-    min-width: 110px;
-    padding: 5px 0;
-}
-
-.plan-btn:hover {
-    cursor: pointer;
-}
-
-.plan-btn:focus {
-    border: 1px solid var(--purplish);
-    outline: 1px solid var(--purplish);
-}
-
-.plan-btn-selected {
-    border-color: var(--purplish);
-    background-color: var(--light-purple);
-}
-.plan-switch-div {
-    background-color: var(--light-purple);
-    border-radius: var(--border-radius);
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    gap: 15px;
-    align-items: center;
-    font-size: 12px;
-}
-
-.plan-inner-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: flex-start;
-    height: 100%;
-    padding: 10px;
-    text-align: left;
-}
-
-.plan-img {
-    width: 30px;
-}
-
-.plan-name {
-    font-weight: bold;
-    margin: 0;
-    font-size: 14px;
-}
-
-.plan-cost {
-    color: var(--cool-gray);
-    margin: 5px 0;
-    font-size: 10px;
-}
-
-.plan-free {
-    font-size: 10px;
-    margin: 0;
-}
 
 /* add-ons */
 

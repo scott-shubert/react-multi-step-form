@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SubscriptionDetails } from './interfaces'
 import { useState } from 'react'
-import Plans, { plans } from './routes/plans'
+import Plans from './routes/plans'
 import Summary from './routes/summary'
 import Confirmmation from './routes/confirmation'
 import ErrorPage from './routes/error-page'
 import Root, { paths } from './routes/root'
 import Contact from './routes/contact'
-import { allAddOns } from './sampleData'
+import { allAddOns, plans } from './sampleData'
 import AddOns from './routes/addOns'
 
 export default function App() {
