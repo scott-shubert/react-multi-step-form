@@ -1,4 +1,4 @@
-import { SubscriptionDetails } from '../interfaces'
+import { SubscriptionDetails } from '../../interfaces'
 
 export default function AddOns({
 	formState,

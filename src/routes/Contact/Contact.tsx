@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router'
-import TextInput from '../components/text-input'
-import { SubscriptionDetails } from '../interfaces'
-import { paths } from './root'
+import TextInput from '../../components/TextInput/TextInput'
+import { SubscriptionDetails } from '../../interfaces'
+import { paths } from '../Root/Root'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 export type FormValues = {

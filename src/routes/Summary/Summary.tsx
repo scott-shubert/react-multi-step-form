@@ -1,6 +1,6 @@
-import { SubscriptionDetails } from '../interfaces'
+import { SubscriptionDetails } from '../../interfaces'
 import { useNavigate } from 'react-router'
-import { paths } from './root'
+import { paths } from '../Root/Root'
 
 export default function Summary({
 	formState,

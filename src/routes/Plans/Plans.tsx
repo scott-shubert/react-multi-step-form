@@ -1,7 +1,7 @@
-import PlanButton from '../components/PlanButton/PlanButton'
-import Toggle from '../components/toggle/toggle'
-import { PlanDetails, SubscriptionDetails } from '../interfaces'
-import { plans } from '../sampleData'
+import PlanButton from '../../components/PlanButton/PlanButton'
+import Toggle from '../../components/Toggle/Toggle'
+import { PlanDetails, SubscriptionDetails } from '../../interfaces'
+import { plans } from '../../sampleData'
 
 export default function Plans({
 	formState,
@@ -25,9 +25,10 @@ export default function Plans({
 				You have the option of monthly or yearly billing.
 			</p>
 			<div className='plans'>
-				{plans.map((plan) => {
+				{plans.map((plan, index) => {
 					return (
 						<PlanButton
+							key={'PlanButtoon' + index}
 							formState={formState}
 							plan={plan}
 							handleSelectPlan={handleSelectPlan}

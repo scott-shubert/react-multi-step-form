@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router'
-import NavButtons from '../components/nav-buttons'
-import AssideStepper from '../components/asside-stepper'
+import NavButtons from '../../components/NavButtons/NavButtons'
+import AssideStepper from '../../components/AsideStepper/AssideStepper'
 
 export const paths = [
 	{ value: '/', label: 'Your Info' },

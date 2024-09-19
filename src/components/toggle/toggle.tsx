@@ -1,4 +1,4 @@
-import './toggle.css'
+import './Toggle.css'
 
 export default function Toggle({
 	leftLabel,
@@ -15,7 +15,7 @@ export default function Toggle({
 		<div className='toggle-div'>
 			{leftLabel}
 			<label className='toggle'>
-				<input type='checkbox' checked={value} onClick={handleChangeSwitch} />
+				<input type='checkbox' checked={value} onChange={handleChangeSwitch} />
 				<span className='toggle-switch'></span>
 			</label>
 			{rightLabel}

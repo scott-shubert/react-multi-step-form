@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SubscriptionDetails } from './interfaces'
 import { useState } from 'react'
-import Plans from './routes/plans'
-import Summary from './routes/summary'
-import Confirmmation from './routes/confirmation'
-import ErrorPage from './routes/error-page'
-import Root, { paths } from './routes/root'
-import Contact from './routes/contact'
+import Plans from './routes/Plans/Plans'
+import Summary from './routes/Summary/Summary'
+import Confirmmation from './routes/Confirmation/Confirmation'
+import ErrorPage from './routes/ErrorPage/ErrorPage'
+import Root, { paths } from './routes/Root/Root'
+import Contact from './routes/Contact/Contact'
 import { allAddOns, plans } from './sampleData'
-import AddOns from './routes/addOns'
+import AddOns from './routes/AddOns/AddOns'
 
 export default function App() {
 	let sub = new SubscriptionDetails()
