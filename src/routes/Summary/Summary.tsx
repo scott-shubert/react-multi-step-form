@@ -2,6 +2,7 @@ import { SubscriptionDetails } from '../../interfaces'
 import { useNavigate } from 'react-router'
 import { paths } from '../Root/Root'
 import './Summary.css'
+import { calculateTotal } from '../../util/pricing'
 
 export default function Summary({
 	formState,
@@ -9,21 +10,7 @@ export default function Summary({
 	formState: SubscriptionDetails
 }) {
 	const navigate = useNavigate()
-	let newTotal = 0
-	if (formState.yearly) {
-		newTotal = formState.plan!.cost.yearly
-
-		for (const addon of formState.addOns) {
-			if (addon.selected) newTotal += addon.cost.yearly
-		}
-	} else {
-		newTotal = formState.plan!.cost.monthly
-
-		for (const addon of formState.addOns) {
-			if (addon.selected) newTotal += addon.cost.monthly
-		}
-	}
-	const total = newTotal
+	const total = calculateTotal(formState)
 
 	const handleClick = () => {
 		navigate(paths[1].value)

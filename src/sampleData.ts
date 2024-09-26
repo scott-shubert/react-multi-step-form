@@ -1,4 +1,4 @@
-import { AddOnDetails, PlanDetails } from './interfaces'
+import { AddOnDetails, PlanDetails, SubscriptionDetails } from './interfaces'
 
 export const allAddOns: AddOnDetails[] = [
 	{
@@ -65,3 +65,12 @@ export const plans: PlanDetails[] = [
 		imageURL: '/images/icon-pro.svg',
 	},
 ]
+
+export const testSubscription: SubscriptionDetails = {
+	name: 'tester',
+	email: 'test@abc.com',
+	phone: '5551234567',
+	plan: plans[0],
+	addOns: allAddOns,
+	yearly: true,
+}
