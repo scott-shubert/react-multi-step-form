@@ -12,17 +12,21 @@ describe('summary', () => {
 		subscription.yearly = true
 	})
 
-	it('should display per year, with 1 addon', () => {
-		subscription.addOns[0].selected = true
-
+	function setup() {
 		render(
 			<MemoryRouter>
 				<Summary formState={subscription} />
 			</MemoryRouter>
 		)
+	}
 
+	it('should display per year, with 1 addon', () => {
+		subscription.addOns[0].selected = true
+
+		setup()
 		const prices = screen.getAllByText(/\/yr/i)
 		const termLabel = screen.getByText(/Per Year/i)
+
 		expect(prices.length).toEqual(3)
 		expect(termLabel).toBeDefined()
 	})
@@ -32,14 +36,10 @@ describe('summary', () => {
 		subscription.addOns[1].selected = true
 		subscription.yearly = false
 
-		render(
-			<MemoryRouter>
-				<Summary formState={subscription} />
-			</MemoryRouter>
-		)
-
+		setup()
 		const prices = screen.getAllByText(/\/mo/i)
 		const termLabel = screen.getByText(/Per Month/i)
+
 		expect(prices.length).toEqual(4)
 		expect(termLabel).toBeDefined()
 	})

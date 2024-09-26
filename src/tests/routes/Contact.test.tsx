@@ -13,7 +13,7 @@ describe('contact', () => {
 		subscription = new SubscriptionDetails()
 	})
 
-	it('should display three alerts for the empty required fields after clicking next', async () => {
+	function setup() {
 		render(
 			<MemoryRouter>
 				<Contact
@@ -26,13 +26,23 @@ describe('contact', () => {
 			</MemoryRouter>
 		)
 
-		const alerts = screen.getAllByRole('alert')
+		return {
+			alerts: screen.getAllByRole('alert'),
+			nextBtn: screen.getByRole('button', { name: /Next/i }),
+			nameField: screen.getByLabelText(/Name/i),
+			emailField: screen.getByLabelText(/Email/i),
+			phoneField: screen.getByLabelText(/Phone/i),
+		}
+	}
+
+	it('should display three alerts for the empty required fields after clicking next', async () => {
+		const { alerts, nextBtn } = setup()
+
 		expect(alerts.length).toBe(3)
 		expect(alerts[0]).toHaveTextContent('')
 		expect(alerts[1]).toHaveTextContent('')
 		expect(alerts[2]).toHaveTextContent('')
 
-		const nextBtn = screen.getByRole('button')
 		const user = userEvent.setup()
 		await user.click(nextBtn)
 
@@ -45,24 +55,11 @@ describe('contact', () => {
 		subscription.name = 'tester'
 		subscription.email = 'test@abc.com'
 		subscription.phone = '5551234567'
+		const { alerts, nextBtn } = setup()
 
-		render(
-			<MemoryRouter>
-				<Contact
-					formState={subscription}
-					setFormState={(updatedSubscription) => {
-						subscription = updatedSubscription
-					}}
-				/>
-				<NavButtons currentStep='/' />
-			</MemoryRouter>
-		)
-
-		const nextBtn = screen.getByRole('button')
 		const user = userEvent.setup()
 		await user.click(nextBtn)
 
-		const alerts = screen.getAllByRole('alert')
 		expect(alerts.length).toBe(3)
 		expect(alerts[0]).toHaveTextContent('')
 		expect(alerts[1]).toHaveTextContent('')
@@ -70,31 +67,14 @@ describe('contact', () => {
 	})
 
 	it('should display 3 alerts after clicking next, then hide them after entering data', async () => {
-		render(
-			<MemoryRouter>
-				<Contact
-					formState={subscription}
-					setFormState={(updatedSubscription) => {
-						subscription = updatedSubscription
-					}}
-				/>
-				<NavButtons currentStep='/' />
-			</MemoryRouter>
-		)
+		const { alerts, nextBtn, nameField, emailField, phoneField } = setup()
 
-		const alerts = screen.getAllByRole('alert')
-
-		const nextBtn = screen.getByRole('button')
 		const user = userEvent.setup()
 		await user.click(nextBtn)
 
 		expect(alerts[0]).toHaveTextContent(/Required/i)
 		expect(alerts[1]).toHaveTextContent(/Required/i)
 		expect(alerts[2]).toHaveTextContent(/Required/i)
-
-		const nameField = screen.getByLabelText(/Name/i)
-		const emailField = screen.getByLabelText(/Email/i)
-		const phoneField = screen.getByLabelText(/Phone/i)
 
 		await user.type(nameField, 'tester')
 		await user.type(emailField, 'test@abc.com')
