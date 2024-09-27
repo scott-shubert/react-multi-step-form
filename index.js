@@ -14,11 +14,13 @@ app.listen(PORT, () => {
 })
 
 app.get('/api/plans', (req, res) => {
-	res.send(getPlans())
+	// Simulate slow backend
+	setTimeout(() => res.send(getPlans()), 800)
 })
 
 app.get('/api/addons', (req, res) => {
-	res.send(getAddOns())
+	// Simulate slow backend
+	setTimeout(() => res.send(getAddOns()), 800)
 })
 
 function getPlans() {
