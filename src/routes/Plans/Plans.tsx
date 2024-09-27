@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react'
 import PlanButton from '../../components/PlanButton/PlanButton'
 import Toggle from '../../components/Toggle/Toggle'
 import { PlanDetails, SubscriptionDetails } from '../../interfaces'
-import { plans } from '../../sampleData'
 import './Plans.css'
+import axios from 'axios'
 
 export default function Plans({
 	formState,
@@ -11,6 +12,14 @@ export default function Plans({
 	formState: SubscriptionDetails
 	setFormState: (value: SubscriptionDetails) => void
 }) {
+	useEffect(() => {
+		axios.get('http://localhost:8080/api/plans').then((response) => {
+			setPlans(response.data)
+		})
+	}, [])
+
+	const [plans, setPlans] = useState([])
+
 	const handleChangeSwitch = () => {
 		setFormState({ ...formState, yearly: !formState.yearly })
 	}
