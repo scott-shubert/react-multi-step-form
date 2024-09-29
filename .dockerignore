@@ -1,0 +1,15 @@
+.gitignore
+.github
+.git
+src
+node_modules
+multi-step-form-main
+*.md
+vite.config.ts
+vitest.config.ts
+dockerfile
+.dockerignore
+package-lock.json
+tsconfig.*
+index.html
+eslint.config.js
